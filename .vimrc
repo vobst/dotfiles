@@ -1,6 +1,8 @@
 " not vi compatible
 set nocompatible
 
+let mapleader=","
+
 "------------------
 " Syntax and indent
 "------------------
@@ -99,6 +101,9 @@ set noerrorbells visualbell t_vb=
 " Enable mouse support. You should avoid relying on this too much, but it can
 " sometimes be convenient.
 set mouse+=a
+
+" locally (window) cd into directory of open buffer
+nnoremap <leader>cd :lcd %:p:h<CR>
 
 " Try to prevent bad habits like using the arrow keys for movement. This is
 " not the only possible bad habit. For example, holding down the h/j/k/l keys
