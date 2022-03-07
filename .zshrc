@@ -8,7 +8,7 @@ SAVEHIST=10000
 bindkey '^R' history-incremental-search-backward 
 
 #----
-# History
+# Misc Configuration
 #----
 setopt beep notify
 # It happens to the best ;)
@@ -25,3 +25,7 @@ bindkey -v
 #----
 # Command Prompt
 PROMPT='%(?.%F{green}√.%F{red}?%?)%f %m %B%F{240}%1~%f%b %# '
+
+if [[ -f .zsh_functions ]] then {
+  source .zsh_functions;
+} fi
