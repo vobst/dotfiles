@@ -18,7 +18,7 @@ bindkey '^R' history-incremental-search-backward
 #----
 setopt beep notify
 # It happens to the best ;)
-alias mv='mv --backup=numbered' # (some) protection against deleting by moving
+alias mv='mv -i' # (some) protection against deleting by moving
 
 
 #----
