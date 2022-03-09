@@ -36,9 +36,9 @@ alias gs="git status"
 alias gu="git add -u"
 alias gc="git commit -m"
 # get top processes eating memory
-alias psmem="ps auxcm | head -6 | awk '{ printf \"%-24s%-18s%-6s\x1b[31m%-6s\x1b[0m\n\", \$11, \$1, \$2, \$4 }'"
+alias psmem="ps auxcm | head -6 | awk '{ printf \"%-24.24s %-18s%-6s\x1b[31m%-6s\x1b[0m\n\", \$11, \$1, \$2, \$4 }'"
 # get top process eating cpu
-alias pscpu="ps auxcr | head -6 | awk '{ printf \"%-24s%-18s%-6s\x1b[31m%-6s\x1b[0m\n\", \$11, \$1, \$2, \$3 }'"
+alias pscpu="ps auxcr | head -6 | awk '{ printf \"%-24.24s %-18s%-6s\x1b[31m%-6s\x1b[0m\n\", \$11, \$1, \$2, \$3 }'"
 
 #----
 # Files
