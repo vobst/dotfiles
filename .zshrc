@@ -47,3 +47,7 @@ alias pscpu="ps auxcr | head -6 | awk '{ printf \"%-24.24s %-18s%-6s\x1b[31m%-6s
 if [[ -f .zsh_functions ]] then {
   source .zsh_functions;
 } fi
+
+if [[ -f .zsh_local ]] then {
+  source .zsh_local;
+} fi
