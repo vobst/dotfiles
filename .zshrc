@@ -43,6 +43,8 @@ if [[ $(hostname | head -c 3) = 'Mac' ]]; then
 else
   echo "TODO: Adapt for Linux" > /dev/null
 fi
+# list files
+alias ll="ls -lAFh --color=yes"
 
 #----
 # Files
