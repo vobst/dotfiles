@@ -1,0 +1,7 @@
+[alias]
+  	graph = log --all --graph --decorate --oneline
+	st = status -sb
+
+# Allow local customizations in the .gitconfig_local file
+[include]
+	path = ~/.gitconfig_local
