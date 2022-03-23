@@ -2,6 +2,9 @@
   	graph = log --all --graph --decorate --oneline
 	st = status -sb
 
+[pull]
+	ff = only
+
 # Allow local customizations in the .gitconfig_local file
 [include]
 	path = ~/.gitconfig_local
