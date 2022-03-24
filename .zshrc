@@ -54,6 +54,6 @@ if [[ -f .zsh_functions ]] then {
   source .zsh_functions;
 } fi
 
-if [[ -f .zsh_local ]] then {
-  source .zsh_local;
+if [[ -f .zsh_local.d/zshrc_local ]] then {
+  source .zsh_local.d/zshrc_local;
 } fi
