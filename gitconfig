@@ -2,6 +2,8 @@
   	graph = log --all --graph --decorate --oneline
 	st = status -sb
 
+[core]
+	excludesFile = ~/.gitignore_global
 [pull]
 	ff = only
 
