@@ -32,9 +32,6 @@ PROMPT='%(?.%F{green}√.%F{red}?%?)%f %m %B%F{240}%1~%f%b %# '
 #----
 # git
 alias g="git"
-alias gs="git status"
-alias gu="git add -u"
-alias gc="git commit -m"
 # get top processes eating memory
 # get top process eating cpu
 if [[ $(hostname | head -c 3) = 'Mac' ]]; then

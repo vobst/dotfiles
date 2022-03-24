@@ -1,6 +1,9 @@
 [alias]
   	graph = log --all --graph --decorate --oneline
 	st = status -sb
+	s = status
+	u = add -u
+	c = commit -m
 
 [core]
 	excludesFile = ~/.gitignore_global
