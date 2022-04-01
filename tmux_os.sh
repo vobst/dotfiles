@@ -1,6 +1,6 @@
 #!/usr/bin/env bash	
-if [[ $(hostname | head -c 3) = 'Mac' ]]; then 
-  	echo "Mac" > /tmp/hax;
+if [[ $(uname | head -c 3) = 'Dar' ]]; then 
+  	echo "Dar" > /tmp/hax;
 	tmux source-file "${HOME}/dotfiles/tmux_mac.conf";
 else
 	echo "Linux" > /tmp/hax;

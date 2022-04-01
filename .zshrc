@@ -34,7 +34,7 @@ PROMPT='%(?.%F{green}√.%F{red}?%?)%f %m %B%F{240}%1~%f%b %# '
 alias g="git"
 # get top processes eating memory
 # get top process eating cpu
-if [[ $(hostname | head -c 3) = 'Mac' ]]; then
+if [[ $(uname | head -c 3) = 'Dar' ]]; then
   alias psmem="ps auxcm | head -6 | awk '{ printf \"%-24.24s %-18s%-6s\x1b[31m%-6s\x1b[0m\n\", \$11, \$1, \$2, \$4 }'"
   alias pscpu="ps auxcr | head -6 | awk '{ printf \"%-24.24s %-18s%-6s\x1b[31m%-6s\x1b[0m\n\", \$11, \$1, \$2, \$3 }'"
 else
