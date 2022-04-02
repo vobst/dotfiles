@@ -25,7 +25,7 @@ alias mv='mv -i' # (some) protection against deleting by moving
 # Prompt
 #----
 # Command Prompt
-PROMPT='%(?.%F{green}√.%F{red}?%?)%f %(!.%F{red}%m.%F{black}%m)%f %B%F{240}%1~%f%b %# '
+PROMPT='%(?.%F{green}√.%F{red}?%?)%f %(!.%F{red}%m.%F{blue}%m)%f %B%F{240}%1~%f%b %# '
 
 #----
 # Aliases

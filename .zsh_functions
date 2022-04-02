@@ -15,3 +15,10 @@ function br {
         return "$code"
     fi
 }
+# Check host OS
+function is_linux() {
+  uname | grep -i Linux &>/dev/null
+}
+function is_osx() {
+  uname | grep -i Darwin &>/dev/null
+}
