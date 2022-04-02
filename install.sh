@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 echo "--- Beta installer, hope you did a backup :)"
 echo "--- Creating symlinks"
+# gdb
+ln -siv ${HOME}/dotfiles/gdbinit ${HOME}/.gdbinit
 # git
 ln -siv ${HOME}/dotfiles/gitconfig ${HOME}/.gitconfig
 ln -siv ${HOME}/dotfiles/gitignore_global ${HOME}/.gitignore_global
@@ -12,6 +14,8 @@ ln -siv ${HOME}/dotfiles/.vimrc ${HOME}/.vimrc
 # tmux
 ln -siv ${HOME}/dotfiles/.tmux.conf ${HOME}/.tmux.conf
 echo "--- Initializing empty local configs"
+# git
+touch ${HOME}/.gdbinit_local
 # git
 touch ${HOME}/.gitconfig_local
 # zsh
