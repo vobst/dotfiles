@@ -2,15 +2,15 @@
 echo "--- Beta installer, hope you did a backup :)"
 echo "--- Creating symlinks"
 # git
-ln -swiv ${HOME}/dotfiles/gitconfig ${HOME}/.gitconfig
-ln -swiv ${HOME}/dotfiles/gitignore_global ${HOME}/.gitignore_global
+ln -siv ${HOME}/dotfiles/gitconfig ${HOME}/.gitconfig
+ln -siv ${HOME}/dotfiles/gitignore_global ${HOME}/.gitignore_global
 # zsh
-ln -swiv ${HOME}/dotfiles/.zshrc ${HOME}/.zshrc
-ln -swiv ${HOME}/dotfiles/.zsh_functions ${HOME}/.zsh_functions
+ln -siv ${HOME}/dotfiles/.zshrc ${HOME}/.zshrc
+ln -siv ${HOME}/dotfiles/.zsh_functions ${HOME}/.zsh_functions
 # vim
-ln -swiv ${HOME}/dotfiles/.vimrc ${HOME}/.vimrc
+ln -siv ${HOME}/dotfiles/.vimrc ${HOME}/.vimrc
 # tmux
-ln -swiv ${HOME}/dotfiles/.tmux.conf ${HOME}/.tmux.conf
+ln -siv ${HOME}/dotfiles/.tmux.conf ${HOME}/.tmux.conf
 echo "--- Initializing empty local configs"
 # git
 touch ${HOME}/.gitconfig_local
