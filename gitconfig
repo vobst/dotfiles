@@ -1,4 +1,5 @@
 [alias]
+	tracked = ls-tree -r master --name-only
   	graph = log --all --graph --decorate --oneline
 	st = status -sb
 	s = status
