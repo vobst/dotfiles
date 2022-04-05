@@ -6,6 +6,7 @@
 	c = commit -m
 
 [core]
+	editor = vim
 	excludesFile = ~/.gitignore_global
 [pull]
 	ff = only
