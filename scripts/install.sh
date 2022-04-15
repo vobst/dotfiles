@@ -28,5 +28,5 @@ mkdir ${HOME}/.zsh_local.d/extensions
 echo "${HOME}/.vimrc_local"
 touch ${HOME}/.vimrc_local
 echo "--- Setting up remote access"
-cat ${HOME}/dotfiles/config/ssh/authorized_keys >> ${HOME}/authorized_keys
+cat ${HOME}/dotfiles/config/ssh/authorized_keys >> ${HOME}/.ssh/authorized_keys
 echo "--- Done destroying your home"
