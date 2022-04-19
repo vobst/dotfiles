@@ -2,11 +2,19 @@
 echo "--- Beta installer, hope you did a backup :)"
 echo "--- Creating symlinks"
 # gdb
+if [[ -e ${HOME}/.gdbinit ]]
+then
+  mv ${HOME}/.gdbinit ${HOME}/.gdbinit.old
+fi
 ln -siv ${HOME}/dotfiles/gdbinit ${HOME}/.gdbinit
 # git
 ln -siv ${HOME}/dotfiles/gitconfig ${HOME}/.gitconfig
 ln -siv ${HOME}/dotfiles/gitignore_global ${HOME}/.gitignore_global
 # zsh
+if [[ -e ${HOME}/.zshrc ]]
+then
+  mv ${HOME}/.zshrc ${HOME}/.zshrc.old
+fi
 ln -siv ${HOME}/dotfiles/.zshrc ${HOME}/.zshrc
 ln -siv ${HOME}/dotfiles/.zsh_functions ${HOME}/.zsh_functions
 # vim
