@@ -3,10 +3,10 @@
 # no whitespaces in filenames or on path
 
 SRC_HOST=ab
-DST_HOST=ms
+DST_HOST=ms-r
 
-SRC_DIR="/tmp/test.d"
-DST_DIR="/tmp/test.d"
+SRC_DIR="/usr/data2/VB-VMs/Backups"
+DST_DIR="/usr/backups/ab-vm"
 
 SCP_FLAGS="-3 -C -l 10000"
 
