@@ -121,6 +121,11 @@ inoremap <Right> <ESC>:echoe "Use l"<CR>
 inoremap <Up>    <ESC>:echoe "Use k"<CR>
 inoremap <Down>  <ESC>:echoe "Use j"<CR>
 
+" Max linelength
+set colorcolumn=73
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%73v.\+/
+
 "---------------------
 " Plugin configuration
 "---------------------

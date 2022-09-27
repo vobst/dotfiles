@@ -1,0 +1,13 @@
+# launched at boot since lingering sessions are activated
+# fed with our ssh key by pam post login script
+
+[Unit]
+Description=SSH key agent
+
+[Service]
+Type=simple
+Environment=SSH_AUTH_SOCK=%t/ssh-agent.socket
+ExecStart=/usr/bin/ssh-agent -D -a $SSH_AUTH_SOCK
+
+[Install]
+WantedBy=default.target

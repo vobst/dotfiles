@@ -1,0 +1,121 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+        colors = true
+        interval = 5
+}
+
+order += "run_watch DOCKERd"
+order += "run_watch DHCPd"
+order += "run_watch SSHd"
+order += "run_watch SSHa"
+order += "ipv6"
+order += "ethernet _first_"
+order += "disk /"
+order += "disk /usr/data"
+order += "disk /usr/data2"
+order += "disk /usr/data3"
+order += "load"
+order += "cpu_temperature 0"
+order += "memory"
+order += "tztime local"
+order += "read_file UPTIME"
+
+run_watch "DOCKERd" {
+	pidfile = "/var/run/docker.pid"
+	format = "%title"
+	separator_block_width = 10 
+}
+
+run_watch "SSHd" {
+	pidfile = "/var/run/sshd.pid"
+	format = "%title"
+	separator_block_width = 10 
+}
+
+run_watch "SSHa" {
+	pidfile = "/run/user/1000/ssh-agent.pid"
+	format = "%title"
+	separator_block_width = 10 
+}
+
+run_watch "DHCPd" {
+	pidfile = "/var/run/dhcpcd/enp0*.pid"
+	format = "%title"
+	separator_block_width = 10 
+}
+
+ethernet _first_ {
+        format_up = "E: %ip (%speed)"
+        format_down = "E: down"
+	separator_block_width = 10 
+}
+
+disk "/" {
+        format = "root %percentage_avail (%avail)"
+	low_threshold = 40
+	threshold_type = percentage_avail
+	format_below_threshold = "Warning: root: %percentage_avail"
+	separator = false
+}
+
+disk "/usr/data" {
+        format = "data1 %percentage_avail (%avail)"
+	low_threshold = 25
+	threshold_type = percentage_avail
+	format_below_threshold = "Warning: data1: %percentage_avail"
+	separator = false
+}
+
+disk "/usr/data2" {
+        format = "data2 %percentage_avail (%avail)"
+	low_threshold = 25
+	threshold_type = percentage_avail
+	format_below_threshold = "Warning: data2: %percentage_avail"
+	separator = false
+}
+
+disk "/usr/data3" {
+        format = "data3 %percentage_avail (%avail)"
+	low_threshold = 25
+	threshold_type = percentage_avail
+	format_below_threshold = "Warning: data3: %percentage_avail"
+	separator_block_width = 10 
+}
+
+load {
+        format = "%1min,%5min,%15min"
+	separator_block_width = 10 
+}
+
+cpu_temperature 0 {
+	format = "T CPU: %degrees"
+	max_threshold = 60
+	path = "/sys/devices/platform/coretemp.0/hwmon/hwmon*/temp1_input"
+	separator_block_width = 10 
+}
+
+
+memory {
+        format = "%percentage_used(%used) of %total"
+        threshold_degraded = "1G"
+        format_degraded = "MEMORY < %available"
+	separator_block_width = 10 
+}
+
+tztime local {
+        format = "%Y-%m-%d %H:%M:%S"
+	separator_block_width = 10 
+}
+
+read_file "UPTIME" {
+	path = "/proc/uptime"
+	format = "%title: %content"
+	separator_block_width = 10 
+}
