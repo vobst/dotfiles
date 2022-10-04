@@ -1,0 +1,5 @@
+--js-flags=--jitless
+--force-dark-mode
+--enable-features=WebUIDarkMode
+--no-default-browser-check
+
