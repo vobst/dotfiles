@@ -127,6 +127,22 @@ highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%73v.\+/
 
 "---------------------
+" Plugin setup
+"---------------------
+" automated installation of vim-plug on new system
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin()
+" https://github.com/iamcco/markdown-preview.nvim
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+
+call plug#end()
+
+"---------------------
 " Plugin configuration
 "---------------------
 " load filetype-specific indent files
@@ -144,6 +160,12 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 " Open a new window for already open buffers
 let g:ctrlp_switch_buffer = 'et'
+
+" Configuration of CtrlP plugin (fuzzy finder)
+" set to 1, the nvim will auto close current preview window when change
+" " from markdown buffer to another buffer
+let g:mkdp_auto_close = 0
+let g:mkdp_browser = '/usr/bin/chromium'
 
 
 

@@ -28,6 +28,16 @@ MaxSessions 10
 
 PubkeyAuthentication yes
 
+# Only for Yubikey resident ssh keys. Forces userVerification on client 
+# side. Good if key is lost but PIN still secret.
+# Can also be forced per key by appending: verify-required to 
+# .ssh/auth_keys (e.g. if system sshd is not enforcing it an user wants 
+# extra protection).
+# However, the best thing is to generate the resident key with option
+# -O verify_required so it is always protected by userVerification
+# regardless of remote settings.
+PubkeyAuthOptions verify-required
+
 PasswordAuthentication no
 
 AuthenticationMethods publickey

@@ -12,11 +12,11 @@ general {
 }
 
 order += "run_watch DOCKERd"
-order += "run_watch DHCPd"
 order += "run_watch SSHd"
-order += "run_watch SSHa"
+order += "run_watch NM"
 order += "ipv6"
 order += "ethernet _first_"
+order += "wireless _first_"
 order += "disk /"
 order += "disk /usr/data"
 order += "disk /usr/data2"
@@ -39,8 +39,8 @@ run_watch "SSHd" {
 	separator_block_width = 10 
 }
 
-run_watch "SSHa" {
-	pidfile = "/run/user/1000/ssh-agent.pid"
+run_watch "NM" {
+	pidfile = "/tmp/NetworkManager.pid"
 	format = "%title"
 	separator_block_width = 10 
 }
@@ -49,6 +49,12 @@ run_watch "DHCPd" {
 	pidfile = "/var/run/dhcpcd/enp0*.pid"
 	format = "%title"
 	separator_block_width = 10 
+}
+
+wireless _first_ {
+	format_up = "W: %ip (%quality at %essid)"
+	format_down = "W: down"
+	format_quality = "%03d%s"
 }
 
 ethernet _first_ {
