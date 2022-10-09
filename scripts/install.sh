@@ -1,34 +1,61 @@
 #!/usr/bin/env bash
-echo "--- Beta installer, hope you did a backup :)"
-echo "--- Creating symlinks"
-# gdb
-ln -siv ${HOME}/dotfiles/gdbinit ${HOME}/.gdbinit
-# git
-ln -siv ${HOME}/dotfiles/gitconfig ${HOME}/.gitconfig
-ln -siv ${HOME}/dotfiles/gitignore_global ${HOME}/.gitignore_global
-# zsh
-ln -siv ${HOME}/dotfiles/.zshrc ${HOME}/.zshrc
-ln -siv ${HOME}/dotfiles/.zsh_functions ${HOME}/.zsh_functions
-# vim
-ln -siv ${HOME}/dotfiles/.vimrc ${HOME}/.vimrc
-# tmux
-ln -siv ${HOME}/dotfiles/.tmux.conf ${HOME}/.tmux.conf
-echo "--- Initializing empty local configs"
-# gdb
-echo "${HOME}/.gdbinit_local"
-touch ${HOME}/.gdbinit_local
-# git
-echo "${HOME}/.gitconfig_local"
-touch ${HOME}/.gitconfig_local
-# zsh
-echo "${HOME}/.zsh_local.d/zshrc_local"
-mkdir ${HOME}/.zsh_local.d/ && touch ${HOME}/.zsh_local.d/zshrc_local && \
-mkdir ${HOME}/.zsh_local.d/extensions
-# vim
-echo "${HOME}/.vimrc_local"
-touch ${HOME}/.vimrc_local
-echo "--- Setting up remote access"
-echo "ssh"
-mkdir ${HOME}/.ssh/
-cat ${HOME}/dotfiles/config/ssh/authorized_keys >> ${HOME}/.ssh/authorized_keys
-echo "--- Done destroying your home"
+
+set -x
+set -e
+set -u
+set -o pipefail
+
+#
+# Command definitions
+#
+
+LN="ln -siv"
+MKDIR="mkdir -vp"
+
+#
+# Function definitions
+#
+
+function symlink {
+  # $1: target
+  # $2: location
+
+  TARGET=${HOME}/dotfiles/"$1"
+  LOCATION=${HOME}/"$2"
+
+  echo "${FUNCNAME[0]}: at $LOCATION to $TARGET"
+  $LN $TARGET $LOCATION
+}
+
+#
+# Dotfiles: symlinks and local files
+#
+DOTFILES="gdbinit gitconfig gitignore_global zshrc zsh_functions"
+DOTFILES=${DOTFILES}" vimrc tmux.conf xinitrc"
+for dotfile in $DOTFILES
+do
+  symlink "$dotfile" ".$dotfile"
+  touch "${HOME}/.${dotfile}_local"
+done
+
+$MKDIR ${HOME}/.zsh_local.d/
+touch ${HOME}/.zsh_local.d/zshrc_local
+$MKDIR ${HOME}/.zsh_local.d/extensions
+
+#
+# Config files: symlinks and local files
+#
+CONFIGDIRS="i3 i3status"
+for configdir in $CONFIGDIRS
+do
+  $MKDIR ${HOME}/.config/$configdir
+  symlink "config/$configdir/config" ".config/$configdir/config"
+  touch ${HOME}/.config/$configdir/config_local
+done
+
+#
+# SSH
+#
+mkdir -vp ${HOME}/.ssh/
+cat ${HOME}/dotfiles/config/ssh/authorized_keys | \
+tee -a ${HOME}/.ssh/authorized_keys > /dev/null
