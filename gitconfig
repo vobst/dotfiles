@@ -11,8 +11,12 @@
 [core]
 	editor = vim
 	excludesFile = ~/.gitignore_global
+
 [pull]
 	ff = only
+
+[credential]
+	helper = cache --timeout=99999999999
 
 # Allow local customizations in the .gitconfig_local file
 [include]
