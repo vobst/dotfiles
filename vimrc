@@ -75,6 +75,20 @@ set smartcase
 " Enable searching as you type
 set incsearch
 
+" Enable spell checking
+map <Leader>d :setlocal spell spelllang=de <return>
+map <Leader>e :setlocal spell spelllang=en_us <return>
+map <Leader>dd :setlocal nospell spelllang=de <return>
+map <Leader>ee :setlocal nospell spelllang=en_us <return>
+hi clear SpellBad
+hi clear SpellCap
+hi clear SpellRare
+hi clear SpellLocal
+hi SpellBad cterm=underline ctermfg=red
+hi SpellCap cterm=underline ctermfg=blue
+hi SpellRare cterm=underline ctermfg=green
+hi SpellLocal cterm=underline ctermfg=darkcyan
+
 "--------------------
 " Misc configurations
 "--------------------

@@ -15,10 +15,38 @@ function br {
         return "$code"
     fi
 }
+
 # Check host OS
 function is_linux() {
   uname | grep -i Linux &>/dev/null
 }
 function is_osx() {
   uname | grep -i Darwin &>/dev/null
+}
+
+# Proxy Settings
+assignProxy(){
+  PROXY_ENV="http_proxy ftp_proxy https_proxy all_proxy "
+  PROXY_ENV=$PROXY_ENV"HTTP_PROXY HTTPS_PROXY FTP_PROXY ALL_PROXY"
+  for envar in $=PROXY_ENV
+  do
+    export $envar=$1
+  done
+  for envar in "no_proxy" "NO_PROXY"
+  do
+    export $envar=$2
+  done
+}
+
+clrProxy(){
+  PROXY_ENV="http_proxy ftp_proxy https_proxy all_proxy "
+  PROXY_ENV=$PROXY_ENV"HTTP_PROXY HTTPS_PROXY FTP_PROXY ALL_PROXY"
+  for envar in $=PROXY_ENV
+  do
+    unset $envar
+  done
+}
+
+function pdfo() {
+  chromium "file://$(pwd)/$1"
 }

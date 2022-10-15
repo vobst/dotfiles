@@ -11,6 +11,7 @@ general {
         interval = 5
 }
 
+order += "run_watch PW"
 order += "run_watch DOCKERd"
 order += "run_watch SSHd"
 order += "run_watch NM"
@@ -21,10 +22,17 @@ order += "disk /"
 order += "disk /usr/data"
 order += "disk /usr/data2"
 order += "disk /usr/data3"
+order += "battery 0"
 order += "load"
 order += "cpu_temperature 0"
 order += "memory"
 order += "tztime local"
+
+run_watch "PW" {
+	pidfile = "/tmp/pipewire.pid"
+	format = "%title"
+	separator_block_width = 10 
+}
 
 run_watch "DOCKERd" {
 	pidfile = "/var/run/docker.pid"
@@ -57,7 +65,7 @@ wireless _first_ {
 }
 
 ethernet _first_ {
-        format_up = "E: %ip (%speed)"
+        format_up = "E: %ip"
         format_down = "E: down"
 	separator_block_width = 10 
 }
@@ -91,6 +99,19 @@ disk "/usr/data3" {
 	threshold_type = percentage_avail
 	format_below_threshold = "Warning: data3: %percentage_avail"
 	separator_block_width = 10 
+}
+
+battery 0 {
+  format = "BAT %percentage"
+  integer_battery_capacity = true
+  format_down = "No BAT"
+  status_chr = "⚡"
+  status_bat = "🔋"
+  status_unk = "?"
+  status_full = "☻"
+  path = "/sys/class/power_supply/BAT%d/uevent"
+  threshold_type = "percentage"
+  low_threshold = 10
 }
 
 load {
