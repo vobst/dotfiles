@@ -11,6 +11,7 @@ general {
         interval = 5
 }
 
+order += "run_watch PW"
 order += "run_watch DOCKERd"
 order += "run_watch SSHd"
 order += "run_watch NM"
@@ -26,6 +27,12 @@ order += "load"
 order += "cpu_temperature 0"
 order += "memory"
 order += "tztime local"
+
+run_watch "PW" {
+	pidfile = "/tmp/pipewire.pid"
+	format = "%title"
+	separator_block_width = 10 
+}
 
 run_watch "DOCKERd" {
 	pidfile = "/var/run/docker.pid"

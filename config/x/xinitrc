@@ -35,6 +35,7 @@ fi
 # create pidfile for status bar
 #pgrep -u $(id -u) ssh-agent > /run/user/$(id -u)/ssh-agent.pid
 pgrep NetworkManager > /tmp/NetworkManager.pid
+pgrep pipewire > /tmp/pipewire.pid
 
 # remap capslock to escape
 setxkbmap -option caps:escape
