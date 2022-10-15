@@ -46,3 +46,7 @@ clrProxy(){
     unset $envar
   done
 }
+
+function pdfo() {
+  chromium "file://$(pwd)/$1"
+}
