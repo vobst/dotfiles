@@ -3,6 +3,11 @@
 #----
 # vim keybindings
 bindkey -v 
+#
+#----
+# PATH
+#----
+export PATH="${PATH}:${HOME}/.local/bin"
 
 #----
 # History
