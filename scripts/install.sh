@@ -57,5 +57,7 @@ done
 # SSH
 #
 mkdir -vp ${HOME}/.ssh/
+touch ${HOME}/.ssh/config_local
+symlink "config/ssh/config" ".ssh/config"
 cat ${HOME}/dotfiles/config/ssh/authorized_keys | \
 tee -a ${HOME}/.ssh/authorized_keys > /dev/null
