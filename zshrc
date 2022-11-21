@@ -2,7 +2,7 @@
 # Keybindings
 #----
 # vim keybindings
-bindkey -v 
+bindkey -v
 #
 #----
 # PATH
@@ -16,7 +16,7 @@ HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
 # ctrl+r history search
-bindkey '^R' history-incremental-search-backward 
+bindkey '^R' history-incremental-search-backward
 
 #----
 # Misc Configuration
@@ -52,8 +52,8 @@ alias ll="ls -lAFh --color=yes"
 # Files
 #----
 # Functions
-if [[ -f .zsh_functions ]] then {
-  source .zsh_functions;
+if [[ -e ${HOME}/.zsh_functions ]] then {
+  source ${HOME}/.zsh_functions;
 } fi
 
 if [[ -f .zsh_local.d/zshrc_local ]] then {
