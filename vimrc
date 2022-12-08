@@ -1,5 +1,6 @@
 " not vi compatible
 set nocompatible
+set encoding=utf8
 
 let mapleader=","
 
@@ -10,7 +11,7 @@ let mapleader=","
 syntax on
 
 " show matching braces when text indicator is over them
-set showmatch 
+set showmatch
 
 " highlight current line, but only in active window
 augroup CursorLineOnlyInActiveWindow
@@ -30,13 +31,13 @@ set autoindent
 set shortmess+=I
 
 " visual autocomplete for command menu
-set wildmenu   
+set wildmenu
 
 " Ignore files for completion
 set wildignore+=*/.git/*,*/tmp/*,*.swp
 
 " Maintain undo history between sessions
-set undofile 
+set undofile
 set undodir=~/.vim/undodir
 
 " Show line numbers.
@@ -46,16 +47,19 @@ set number
 set relativenumber
 
 " fix slow O inserts
-set timeout timeoutlen=1000 ttimeoutlen=100 
+set timeout timeoutlen=1000 ttimeoutlen=100
 
 " incremental search (as string is being typed)
-set incsearch 
+set incsearch
 
 " highlight search
-set hls 
+set hls
+
+" unhighlight search
+noremap <leader>noh <Cmd>noh<CR>
 
 " more history
-set history=8192 
+set history=8192
 
 " Always show the status line at the bottom, even if you only have one window open.
 set laststatus=2
@@ -103,7 +107,7 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
 " Unbind some useless/annoying default key bindings.
-nmap Q <Nop> 
+nmap Q <Nop>
 
 " Unbind for tmux
 map <C-a> <Nop>
@@ -157,6 +161,8 @@ endif
 call plug#begin()
 " https://github.com/iamcco/markdown-preview.nvim
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'SirVer/ultisnips'
+Plug 'lervag/vimtex'
 
 call plug#end()
 
@@ -164,10 +170,48 @@ call plug#end()
 " Plugin configuration
 "---------------------
 " load filetype-specific indent files
-filetype indent on      
+filetype indent on
 
 " load filetype specific plugin files
-filetype plugin on      
+filetype plugin on
+
+" Configuration of UltiSnips plugin
+" writing snippets
+" thinking about using the home-row keys as efficient snippet triggers
+"  :help UltiSnips-authoring-snippets
+"  :help UltiSnips-snippet-options
+"   A enables automatic expansion
+"   r allows the use of regular expansions in the snippet’s trigger
+"   b expands snippets only if trigger is typed at the beginning of a line
+"   i for in-word expansion
+"  :help UltiSnips-basic-syntax
+"   comments, which start with #
+"   extends filetype: anywhere in a *.snippets file will load all snippets from filetype.snippets
+"   priority {N}: when multiple snippets have the same trigger, only the highest-priority snippet is expanded
+"  :help UltiSnips-character-escaping
+"   the characters ', {, $, and \ need to be escaped by prepending a backslash \
+"  :help UltiSnips-tabstops
+"   create a tabstop with a dollar sign followed by a number
+"  :help UltiSnips-placeholders
+"   syntax for defining placeholder text is ${1:placeholder}
+"  :help UltiSnips-mirrors
+"   mirrored tabstops: just repeat the tabstop you wish to mirror
+"  :help UltiSnips-visual-placeholder
+"   one visual placeholder per snippet, and you specify it with the ${VISUAL} keyword
+"  :help UltiSnips-interpolation
+"   :help UltiSnips-custom-context-snippets
+"   snippets expand only when the trigger is typed in LaTeX math
+"   accessing characters captured by a regular expression trigger
+" use Tab to expand snippets
+let g:UltiSnipsExpandTrigger       = '<Tab>'
+" use Tab to move forward through tabstops
+let g:UltiSnipsJumpForwardTrigger  = '<Tab>'
+" use Shift-Tab to move backward through tabstops
+let g:UltiSnipsJumpBackwardTrigger = '<S-Tab>'
+" where to search for .snippet files
+let g:UltiSnipsSnippetDirectories = [$HOME.'/dotfiles/config/vim/UltiSnips', $HOME.'/.config/vim/UltiSnips']
+" Use <leader>u in normal mode to refresh UltiSnips snippets
+nnoremap <leader>u <Cmd>call UltiSnips#RefreshSnippets()<CR>
 
 " Configuration of CtrlP plugin (fuzzy finder)
 " Keyboard
@@ -181,7 +225,7 @@ let g:ctrlp_switch_buffer = 'et'
 
 " Configuration of CtrlP plugin (fuzzy finder)
 " set to 1, the nvim will auto close current preview window when change
-" " from markdown buffer to another buffer
+" from markdown buffer to another buffer
 let g:mkdp_auto_close = 0
 let g:mkdp_browser = '/usr/bin/chromium'
 

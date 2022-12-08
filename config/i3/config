@@ -35,6 +35,7 @@ font pango:DejaVu Sans Mono 11
 for_window [class="thunderbird"] layout tabbed
 exec --no-startup-id 1password
 exec --no-startup-id "cat .config/chromium/flags | xargs chromium"
+exec --no-startup-id "brave"
 exec --no-startup-id "alacritty -e thunderbird"
 
 # Use pactl to adjust volume in PulseAudio.

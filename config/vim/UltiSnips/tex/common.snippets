@@ -1,0 +1,207 @@
+# include this code block at the top of a *.snippets file...
+# ----------------------------- #
+global !p
+
+def math():
+	return vim.eval('vimtex#syntax#in_mathzone()') == '1'
+
+def comment():
+	return vim.eval('vimtex#syntax#in_comment()') == '1'
+
+def env(name):
+	[x,y] = vim.eval("vimtex#env#is_inside('" + name + "')")
+	return x != '0' and y != '0'
+
+endglobal
+## BEGIN template context snippets https://castel.dev/post/lecture-notes-1/#context
+# place 'context "math()"' above any snippets you want to expand only in math mode
+context "math()"
+snippet ff "This \frac{}{} snippet expands only a LaTeX math context"
+\frac{$1}{$2}$0
+endsnippet
+## END template context triggers
+
+## BEGIN template regex triggers
+snippet "([^a-zA-Z])trigger" "Expands if 'trigger' is typed after characters other than a-z or A-Z" r
+`!p snip.rv = match.group(1)`snippet body
+endsnippet
+
+snippet "(^|[^a-zA-Z])trigger" "Expands on a new line or after characters other than a-z or A-Z" r
+`!p snip.rv = match.group(1)`snippet body
+endsnippet
+
+snippet "(^|[\W])trigger" "Expands on a new line or after characters other than 0-9, a-z, or A-Z" r
+`!p snip.rv = match.group(1)`snippet body
+endsnippet
+
+# This trigger suppresses numbers, too
+snippet "([\w])trigger" "Expands if 'trigger' is typed after 0-9, a-z, and  A-Z" r
+`!p snip.rv = match.group(1)`snippet body
+endsnippet
+
+# Of course, modify the }, ), ], and | characters as you wish
+snippet "([\w]|[\}\)\]\|])trigger" "Expands after 0-9, a-z, A-Z and }, ), ], and |" r
+`!p snip.rv = match.group(1)`snippet body
+endsnippet
+
+# This trigger suppresses expansion after numbers
+snippet "([a-zA-Z]|[\}\)\]\|])trigger" "Expands after a-z, A-Z and }, ), ], and |" r
+`!p snip.rv = match.group(1)`snippet body
+endsnippet
+## END template regex triggers
+
+snippet tt "The \texttt{} command for typewriter-style font"
+\texttt{${1:${VISUAL}}$0
+endsnippet
+
+snippet hr "The hyperref package's \href{}{} command (for url links)"
+\href{${1:url}}{${2:display name}}$0
+endsnippet
+
+snippet beg "begin{} / end{}" bA
+\\begin{$1}
+$0
+\\end{$1}
+endsnippet
+
+##############
+# FORMATTING #
+##############
+
+snippet ii "Bold" wi
+\textit{${1:${VISUAL}}}$0
+endsnippet
+
+snippet bf "Bold" wi
+\textbf{${1:${VISUAL}}}$0
+endsnippet
+
+###########
+# UMLAUTE #
+###########
+
+snippet ae "ä" Ai
+ä
+endsnippet
+
+snippet ue "ü" Ai
+ü
+endsnippet
+
+snippet oe "ö" Ai
+ö
+endsnippet
+
+#########
+# ITEMS #
+#########
+
+snippet enum "Enumerate" bi
+\begin{enumerate}
+\item ${0:${VISUAL}}
+\end{enumerate}
+endsnippet
+
+snippet item "Itemize" bi
+\begin{itemize}
+\item ${0:${VISUAL}}
+\end{itemize}
+endsnippet
+
+snippet itm "Itemize" bi
+\item ${0:${VISUAL}}
+endsnippet
+
+##########
+# TABLES #
+##########
+
+snippet table "Table environment" b
+\begin{table}[${1:htpb}]
+\centering
+\caption{${2:caption}}
+\label{tab:${3:label}}
+
+\begin{${4:t}${4/(t)$|(a)$|(.*)/(?1:abular)(?2:rray)/}}{${5:c}}
+$0${5/(?<=.)(c|l|r)|./(?1: & )/g}
+\end{$4${4/(t)$|(a)$|(.*)/(?1:abular)(?2:rray)/}}
+\end{table}
+endsnippet
+
+############
+# CITATION #
+############
+
+snippet rt "Referenec a table" i
+Tab.~\ref{tab:${1:table}}$0
+endsnippet
+
+############
+# CITATION #
+############
+
+snippet ci "Citaion" i
+\cite{${1:reference}}$0
+endsnippet
+
+############
+# ACRONYMS #
+############
+
+snippet ac "Acroynm normal" i
+\ac{${1:acronym}}$0
+endsnippet
+
+snippet acd "Acroynm definition" b
+\acro{${1:acronym}}[${2:short name}]{${3:full name}}
+endsnippet
+
+############
+# SECTIONS #
+############
+
+snippet chap "Chapter" wi
+\chapter{$1${VISUAL}}
+endsnippet
+
+snippet sec "Section" wi
+\section{$1${VISUAL}}
+endsnippet
+
+snippet sec* "Section*" wi
+\section*{$1${VISUAL}}
+endsnippet
+
+snippet sub "Subsection" wi
+\subsection{$1${VISUAL}}
+endsnippet
+
+snippet sub* "Subsection*" wi
+\subsection*{$1${VISUAL}}
+endsnippet
+
+snippet subsub "Subsection" wi
+\subsubsection{$1${VISUAL}}
+endsnippet
+
+snippet subsub* "Subsubsection" wi
+\subsubsection*{$1${VISUAL}}
+endsnippet
+
+snippet par "Paragraph" wi
+\paragraph{$1${VISUAL}}
+endsnippet
+
+snippet par* "Paragraph*" wi
+\paragraph*{$1${VISUAL}}
+endsnippet
+
+snippet subpar "Sub Paragraph" wi
+\subparagraph{$1${VISUAL}}
+endsnippet
+
+snippet subpar* "Sub Paragraph*" wi
+\subparagraph*{$1${VISUAL}}
+endsnippet
+
+# vim:ft=snippets:
