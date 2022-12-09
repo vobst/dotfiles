@@ -163,6 +163,7 @@ call plug#begin()
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'SirVer/ultisnips'
 Plug 'lervag/vimtex'
+Plug 'vim-autoformat/vim-autoformat'
 
 call plug#end()
 
@@ -174,6 +175,17 @@ filetype indent on
 
 " load filetype specific plugin files
 filetype plugin on
+
+let g:formatterpath = ['/home/archie/.local/bin']
+let g:autoformat_verbosemode=2
+" keybinding to autoformat
+noremap <leader>af <Cmd>:Autoformat<CR>
+" autoformat on save
+au BufWrite * :Autoformat
+" disable fallback retabbing and indent
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 0
+let g:formatdef_latexindent = '"latexindent -"'
 
 " Configuration of UltiSnips plugin
 " writing snippets

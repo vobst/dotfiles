@@ -23,6 +23,7 @@ if empty(v:servername) && exists('*remote_startserver')
 endif
 
 let g:vimtex_imaps_enabled = 0
+let g:vimtex_format_enabled = 0
 
 " Don't open QuickFix for warning messages if no errors are present
 let g:vimtex_quickfix_open_on_warning = 0  
