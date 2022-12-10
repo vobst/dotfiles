@@ -89,3 +89,13 @@ touch ${HOME}/.ssh/config_local
 symlink "config/ssh/config" ".ssh/config"
 cat ${HOME}/dotfiles/config/ssh/authorized_keys | \
 tee -a ${HOME}/.ssh/authorized_keys > /dev/null
+
+#
+# vim
+#
+$MKDIR ${HOME}/.vim/ftplugin
+FTPLUGIN="tex"
+for ft in $FTPLUGIN
+do
+  symlink "config/vim/ftplugin/${ft}.vim" ".vim/ftplugin/${ft}.vim"
+done

@@ -176,9 +176,10 @@ filetype indent on
 " load filetype specific plugin files
 filetype plugin on
 
+" Configuration of autoformat plugin
 let g:formatterpath = ['/home/archie/.local/bin']
 " for debugging
-"let g:autoformat_verbosemode=2
+let g:autoformat_verbosemode=2
 " keybinding to autoformat
 noremap <leader>af <Cmd>:Autoformat<CR>
 " autoformat on save
@@ -215,6 +216,7 @@ let g:formatdef_latexindent = '"latexindent -"'
 "   :help UltiSnips-custom-context-snippets
 "   snippets expand only when the trigger is typed in LaTeX math
 "   accessing characters captured by a regular expression trigger
+"
 " use Tab to expand snippets
 let g:UltiSnipsExpandTrigger       = '<Tab>'
 " use Tab to move forward through tabstops
@@ -222,7 +224,7 @@ let g:UltiSnipsJumpForwardTrigger  = '<Tab>'
 " use Shift-Tab to move backward through tabstops
 let g:UltiSnipsJumpBackwardTrigger = '<S-Tab>'
 " where to search for .snippet files
-let g:UltiSnipsSnippetDirectories = [$HOME.'/dotfiles/config/vim/UltiSnips', $HOME.'/.config/vim/UltiSnips']
+let g:UltiSnipsSnippetDirectories = [$HOME.'/dotfiles/config/vim/UltiSnips']
 " Use <leader>u in normal mode to refresh UltiSnips snippets
 nnoremap <leader>u <Cmd>call UltiSnips#RefreshSnippets()<CR>
 
@@ -236,13 +238,11 @@ let g:ctrlp_working_path_mode = 'ra'
 " Open a new window for already open buffers
 let g:ctrlp_switch_buffer = 'et'
 
-" Configuration of CtrlP plugin (fuzzy finder)
+" Configuration of MarkdownPreview
 " set to 1, the nvim will auto close current preview window when change
 " from markdown buffer to another buffer
 let g:mkdp_auto_close = 0
 let g:mkdp_browser = '/usr/bin/chromium'
-
-
 
 "---------------------
 " Local customizations
