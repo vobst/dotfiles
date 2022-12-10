@@ -6,6 +6,11 @@ set -u
 set -o pipefail
 
 #
+# tree
+#
+PREFIX=${HOME}/dotfiles
+
+#
 # Command definitions
 #
 
@@ -45,7 +50,7 @@ $MKDIR ${HOME}/.zsh_local.d/extensions
 #
 # Config files: symlinks and local files
 #
-CONFIGDIRS="i3 i3status broot"
+CONFIGDIRS="i3 i3status broot chromium"
 for configdir in $CONFIGDIRS
 do
   $MKDIR ${HOME}/.config/${configdir}
