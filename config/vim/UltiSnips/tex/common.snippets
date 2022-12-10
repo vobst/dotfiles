@@ -50,8 +50,8 @@ snippet "([a-zA-Z]|[\}\)\]\|])trigger" "Expands after a-z, A-Z and }, ), ], and 
 endsnippet
 ## END template regex triggers
 
-snippet tt "The \texttt{} command for typewriter-style font"
-\texttt{${1:${VISUAL}}$0
+snippet mm "Inline math"
+\$${1:${VISUAL}}\$$0
 endsnippet
 
 snippet hr "The hyperref package's \href{}{} command (for url links)"
@@ -67,6 +67,10 @@ endsnippet
 ##############
 # FORMATTING #
 ##############
+
+snippet tt "The \texttt{} command for typewriter-style font"
+\texttt{${1:${VISUAL}}$0
+endsnippet
 
 snippet ii "Bold" wi
 \textit{${1:${VISUAL}}}$0
@@ -128,9 +132,9 @@ $0${5/(?<=.)(c|l|r)|./(?1: & )/g}
 \end{table}
 endsnippet
 
-############
-# CITATION #
-############
+#############
+# REFERENCE #
+#############
 
 snippet rt "Referenec a table" i
 Tab.~\ref{tab:${1:table}}$0
