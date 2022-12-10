@@ -17,8 +17,8 @@ MKDIR="mkdir -vp"
 #
 
 function symlink {
-  # $1: target
-  # $2: location
+  # $1: target (relative to tree)
+  # $2: location (relative to HOME)
 
   TARGET=${HOME}/dotfiles/"$1"
   LOCATION=${HOME}/"$2"
@@ -45,18 +45,41 @@ $MKDIR ${HOME}/.zsh_local.d/extensions
 #
 # Config files: symlinks and local files
 #
-CONFIGDIRS="i3 i3status"
+CONFIGDIRS="i3 i3status broot"
 for configdir in $CONFIGDIRS
 do
-  $MKDIR ${HOME}/.config/$configdir
-  symlink "config/$configdir/config" ".config/$configdir/config"
+  $MKDIR ${HOME}/.config/${configdir}
+  for file in $(find ${PREFIX}/config/${configdir} -maxdepth 1 -type f)
+  do
+    name=$(basename $file)
+    symlink "config/${configdir}/${name}" ".config/${configdir}/${name}"
+  done
   touch ${HOME}/.config/$configdir/config_local
+done
+
+#
+# Local programs and scripts
+#
+$MKDIR ${HOME}/.local/{opt,bin}
+LOCALDIRS="latexindent"
+for localdir in $LOCALDIRS
+do
+  $MKDIR ${HOME}/.local/opt/${localdir}
+  for file in $(find ${PREFIX}/local/opt/${localdir} -maxdepth 1 -type f)
+  do
+    name=$(basename $file)
+    symlink "local/opt/${localdir}/${name}" ".local/opt/${localdir}/${name}"
+    if [[ -x $file ]]
+    then
+      symlink "local/opt/${localdir}/${name}" ".local/bin/${name}"
+    fi
+  done
 done
 
 #
 # SSH
 #
-mkdir -vp ${HOME}/.ssh/
+$MKDIR ${HOME}/.ssh/
 touch ${HOME}/.ssh/config_local
 symlink "config/ssh/config" ".ssh/config"
 cat ${HOME}/dotfiles/config/ssh/authorized_keys | \

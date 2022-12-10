@@ -9,6 +9,12 @@ bindkey -v
 #----
 export PATH="${HOME}/.local/bin:${PATH}"
 
+
+#----
+# ENVIRONMENT
+#----
+export EDITOR=vim
+
 #----
 # History
 #----

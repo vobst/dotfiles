@@ -177,11 +177,12 @@ filetype indent on
 filetype plugin on
 
 let g:formatterpath = ['/home/archie/.local/bin']
-let g:autoformat_verbosemode=2
+" for debugging
+"let g:autoformat_verbosemode=2
 " keybinding to autoformat
 noremap <leader>af <Cmd>:Autoformat<CR>
 " autoformat on save
-au BufWrite * :Autoformat
+"au BufWrite * :Autoformat
 " disable fallback retabbing and indent
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
