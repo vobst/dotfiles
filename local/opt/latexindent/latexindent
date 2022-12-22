@@ -6,17 +6,11 @@ set -xueo pipefail
 
 docker pull ghcr.io/cmhughes/latexindent.pl 1>&2
 
-if [[ $# != 1 ]]
-then
-	echo "Usage: [FLAGS="flags"] $0 <file to format>"
-fi
-
 #DEFAULT_FLAGS="-s -w"
 
 docker run 							\
-	-v "$(pwd)"/"$1":/"$1"			 		\
 	--rm 							\
 	-i 							\
-	--name "latexindent-$1"					\
+	--name "latexindent"					\
 	ghcr.io/cmhughes/latexindent.pl 			\
-	${DEFAULT_FLAGS:-} ${FLAGS:-} $1
+	${DEFAULT_FLAGS:-} ${FLAGS:-}

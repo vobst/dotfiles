@@ -164,6 +164,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 Plug 'SirVer/ultisnips'
 Plug 'lervag/vimtex'
 Plug 'vim-autoformat/vim-autoformat'
+Plug 'ctrlpvim/ctrlp.vim'
 
 call plug#end()
 
@@ -187,7 +188,7 @@ noremap <leader>af <Cmd>:Autoformat<CR>
 " disable fallback retabbing and indent
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
-let g:formatdef_latexindent = '"latexindent -"'
+let g:formatdef_latexindent = '"latexindent"'
 
 " Configuration of UltiSnips plugin
 " writing snippets

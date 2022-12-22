@@ -92,8 +92,22 @@ snippet ue "ü" Ai
 ü
 endsnippet
 
+snippet UE "ü" Ai
+Ü
+endsnippet
+
 snippet oe "ö" Ai
 ö
+endsnippet
+
+########
+# CODE #
+########
+
+snippet verb "Verbatim Code / Shell-Output / etc." b
+\begin{verbatim}
+${0:${VISUAL}}
+\end{verbatim}
 endsnippet
 
 #########
@@ -106,7 +120,7 @@ snippet enum "Enumerate" bi
 \end{enumerate}
 endsnippet
 
-snippet item "Itemize" bi
+snippet itz "Itemize" bi
 \begin{itemize}
 \item ${0:${VISUAL}}
 \end{itemize}

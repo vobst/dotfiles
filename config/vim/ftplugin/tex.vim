@@ -26,7 +26,7 @@ let g:vimtex_imaps_enabled = 0
 let g:vimtex_format_enabled = 0
 
 " Don't open QuickFix for warning messages if no errors are present
-let g:vimtex_quickfix_open_on_warning = 0  
+let g:vimtex_quickfix_open_on_warning = 0
 
 let g:vimtex_delim_toggle_mod_list = [
   \ ['\left', '\right'],
@@ -61,7 +61,7 @@ endif
 function! s:TexFocusVim() abort
   " Give window manager time to recognize focus moved to Zathura;
   " tweak the 200m as needed for your hardware and window manager.
-  sleep 200m  
+  sleep 200m
   " Refocus Vim and redraw the screen
   silent execute "!xdotool windowfocus " . expand(g:vim_window_id)
 redraw!
