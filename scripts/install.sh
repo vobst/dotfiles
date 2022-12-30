@@ -92,3 +92,4 @@ FTPLUGIN="tex"
 for ft in $FTPLUGIN; do
 	symlink "config/vim/ftplugin/${ft}.vim" ".vim/ftplugin/${ft}.vim"
 done
+symlink "config/vim/coc-settings.json" ".vim/coc-settings.json"
