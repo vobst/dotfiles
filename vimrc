@@ -1,5 +1,6 @@
 " not vi compatible
 set nocompatible
+
 set encoding=utf8
 
 let mapleader=","
@@ -27,6 +28,14 @@ set autoindent
 "---------------------
 " Basic editing config
 "---------------------
+" Having longer updatetime (default is 4000 ms = 4s) leads to noticeable
+" delays and poor user experience
+set updatetime=300
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved
+set signcolumn=no
+
 " Disable the default Vim startup message.
 set shortmess+=I
 
@@ -141,7 +150,7 @@ inoremap <Down>  <ESC>:echoe "Use j"<CR>
 
 " Max linelength
 set colorcolumn=73
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+highlight OverLength ctermbg=red guibg=red
 match OverLength /\%73v.\+/
 
 " Trailing whitespace
@@ -165,6 +174,7 @@ Plug 'SirVer/ultisnips'
 Plug 'lervag/vimtex'
 Plug 'vim-autoformat/vim-autoformat'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
@@ -189,6 +199,18 @@ noremap <leader>af <Cmd>:Autoformat<CR>
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
 let g:formatdef_latexindent = '"latexindent"'
+
+" Use <S-Tab> and <S-Q> to navigate the completion list
+inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#next(1) : "\<S-Tab>"
+inoremap <expr> <S-Q> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Q>"
+" show documentation of symbol under cursor(cursor hover)
+nnoremap <silent> <leader>h :call CocActionAsync('doHover')<cr>
+inoremap <silent><expr> <C-o> coc#refresh()
+inoremap <silent><expr> <C-w> coc#pum#cancel()
+nmap <silent> <leader>gd <Plug>(coc-definition)
+nmap <silent> <leader>gy <Plug>(coc-type-definition)
+nmap <silent> <leader>gi <Plug>(coc-implementation)
+nmap <silent> <leader>gr <Plug>(coc-references)
 
 " Configuration of UltiSnips plugin
 " writing snippets
@@ -252,5 +274,5 @@ let g:mkdp_browser = '/usr/bin/chromium'
 " local customizations in ~/.vimrc_local
 let $LOCALFILE=expand("~/.vimrc_local")
 if filereadable($LOCALFILE)
-    source $LOCALFILE
+ source $LOCALFILE
 endif

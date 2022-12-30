@@ -49,7 +49,7 @@ $MKDIR ${HOME}/.zsh_local.d/extensions
 #
 # Config files: symlinks and local files
 #
-CONFIGDIRS="i3 i3status broot chromium"
+CONFIGDIRS="i3 i3status broot chromium rustfmt"
 for configdir in $CONFIGDIRS; do
 	$MKDIR ${HOME}/.config/${configdir}
 	for file in $(find ${PREFIX}/config/${configdir} -maxdepth 1 -type f); do
