@@ -18,6 +18,7 @@ RUN set -e 							&& \
 	kali-linux-headless					\
 	libc6-dev						\
 	libc6-dbg						\
+	llvm							\
     	locales							\
 	python3							\
 	python3-dev						\

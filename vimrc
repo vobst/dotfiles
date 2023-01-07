@@ -198,8 +198,11 @@ noremap <leader>af <Cmd>:Autoformat<CR>
 " disable fallback retabbing and indent
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
-let g:formatdef_latexindent = '"latexindent"'
 
+let g:formatdef_latexindent = '"latexindent"'
+let g:formatdef_black = '"black -q --line-length 72 -"'
+
+" Configuration of autocompletion plugin
 " Use <S-Tab> and <S-Q> to navigate the completion list
 inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#next(1) : "\<S-Tab>"
 inoremap <expr> <S-Q> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Q>"
@@ -211,6 +214,13 @@ nmap <silent> <leader>gd <Plug>(coc-definition)
 nmap <silent> <leader>gy <Plug>(coc-type-definition)
 nmap <silent> <leader>gi <Plug>(coc-implementation)
 nmap <silent> <leader>gr <Plug>(coc-references)
+""" Customize colors
+hi CocInlayHint ctermbg=237
+hi CocHighlightText ctermbg=red
+hi CocMenuSel ctermfg=red guibg=green
+hi CocFloating ctermfg=146 ctermbg=18
+hi CocListLine ctermbg=blue
+hi CocCodeLens ctermfg=white
 
 " Configuration of UltiSnips plugin
 " writing snippets
