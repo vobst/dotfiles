@@ -285,8 +285,9 @@ nmap <silent> <leader>gi <Plug>(coc-implementation)
 nmap <silent> <leader>gr <Plug>(coc-references)
 
 """ Customize colors
-hi CocInlayHint ctermbg=237
-hi CocHighlightText ctermbg=red
+hi CocInlayHint ctermbg=232 ctermfg=250
+hi CocFadeOut ctermbg=232 ctermfg=240
+hi CocHighlightText ctermbg=233 ctermfg=184
 hi CocMenuSel ctermfg=red guibg=green
 hi CocFloating ctermfg=146 ctermbg=18
 hi CocListLine ctermbg=blue
