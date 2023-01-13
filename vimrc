@@ -203,6 +203,24 @@ let g:formatdef_latexindent = '"latexindent"'
 let g:formatdef_black = '"black -q --line-length 72 -"'
 
 " Configuration of autocompletion plugin
+" Do not start automatically
+let g:coc_start_at_startup = 0
+" Toggle on/off
+let s:coc_enabled = 0
+function! ToggleCoc()
+   if s:coc_enabled == 0
+      let s:coc_enabled = 1
+      CocStart
+      CocEnable
+      echo 'COC on'
+   else
+      let s:coc_enabled = 0
+      CocDisable
+      echo 'COC off'
+   endif
+endfunction
+nnoremap <silent> <leader>tc :call ToggleCoc()<cr>
+" Toggle inlay hints
 " Use <S-Tab> and <S-Q> to navigate the completion list
 inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#next(1) : "\<S-Tab>"
 inoremap <expr> <S-Q> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Q>"
