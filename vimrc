@@ -205,6 +205,7 @@ let g:formatdef_black = '"black -q --line-length 72 -"'
 " Configuration of autocompletion plugin
 " Do not start automatically
 let g:coc_start_at_startup = 0
+
 " Toggle on/off
 let s:coc_enabled = 0
 function! ToggleCoc()
@@ -219,11 +220,61 @@ function! ToggleCoc()
       echo 'COC off'
    endif
 endfunction
+
 nnoremap <silent> <leader>tc :call ToggleCoc()<cr>
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+
+" Add (Neo)Vim's native statusline support
+" NOTE: Please see `:h coc-status` for integrations with external plugins that
+" provide custom statusline: lightline.vim, vim-airline
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Mappings for CoCList
+" Show all diagnostics
+nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions
+nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+" Show commands
+nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document
+nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item
+nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item
+nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+" Highlight the symbol and its references when holding the cursor
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming
+nmap <leader>rn <Plug>(coc-rename)
+
 " Toggle inlay hints
+" " TODO
+
 " Use <S-Tab> and <S-Q> to navigate the completion list
 inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#next(1) : "\<S-Tab>"
 inoremap <expr> <S-Q> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Q>"
+
 " show documentation of symbol under cursor(cursor hover)
 nnoremap <silent> <leader>h :call CocActionAsync('doHover')<cr>
 inoremap <silent><expr> <C-o> coc#refresh()
@@ -232,6 +283,7 @@ nmap <silent> <leader>gd <Plug>(coc-definition)
 nmap <silent> <leader>gy <Plug>(coc-type-definition)
 nmap <silent> <leader>gi <Plug>(coc-implementation)
 nmap <silent> <leader>gr <Plug>(coc-references)
+
 """ Customize colors
 hi CocInlayHint ctermbg=237
 hi CocHighlightText ctermbg=red

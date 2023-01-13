@@ -1,7 +1,8 @@
 {
-  "rust-analyzer.inlayHints.typeHints.enable": false,
+  "suggest.noselect": true,
+  "rust-analyzer.inlayHints.typeHints.enable": true,
   "rust-analyzer.inlayHints.chainingHints.enable": false,
   "rust-analyzer.inlayHints.closingBraceHints.enable": false,
-  "rust-analyzer.inlayHints.parameterHints.enable": false,
+  "rust-analyzer.inlayHints.parameterHints.enable": true,
   "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/15.0.6/clangd_15.0.6/bin/clangd"
 }
