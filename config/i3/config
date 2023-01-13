@@ -37,6 +37,7 @@ exec --no-startup-id 1password
 exec --no-startup-id "cat .config/chromium/flags | xargs chromium"
 exec --no-startup-id "brave"
 exec --no-startup-id "alacritty -e thunderbird"
+exec --no-startup-id "zotero"
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -46,7 +47,7 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # use these keys for focus, movement, and resize directions when reaching for
-# the arrows is not convenient
+# the arrows is not convenient, vim like
 set $up k
 set $down j
 set $left h
@@ -59,7 +60,7 @@ floating_modifier Mod1
 bindsym Mod1+Return exec alacritty
 
 # start a browser (with proxy)
-bindsym Mod1+Shift+Escape exec cat .config/chromium/flags_work | xargs chromium
+bindsym Mod1+Shift+Escape exec cat .config/chromium/flags .config/chromium/flags_work | xargs chromium
 
 # start a browser (without proxy)
 bindsym Mod1+Escape exec cat .config/chromium/flags | xargs chromium
