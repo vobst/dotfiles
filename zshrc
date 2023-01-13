@@ -63,6 +63,10 @@ if [[ -e ${HOME}/.zsh_functions ]] then {
   source ${HOME}/.zsh_functions;
 } fi
 
+if [[ -e ${HOME}/.zsh_functions_local ]] then {
+  source ${HOME}/.zsh_functions_local;
+} fi
+
 if [[ -f .zsh_local.d/zshrc_local ]] then {
   source .zsh_local.d/zshrc_local;
 } fi

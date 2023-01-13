@@ -25,24 +25,27 @@ function is_osx() {
 }
 
 # Proxy Settings
-assignProxy(){
+function assignProxy() {
   PROXY_ENV="http_proxy ftp_proxy https_proxy all_proxy "
   PROXY_ENV=$PROXY_ENV"HTTP_PROXY HTTPS_PROXY FTP_PROXY ALL_PROXY"
   for envar in $=PROXY_ENV
   do
+    echo "Setting: $envar = $1"
     export $envar=$1
   done
   for envar in "no_proxy" "NO_PROXY"
   do
+    echo "Setting: $envar = $2"
     export $envar=$2
   done
 }
 
-clrProxy(){
+function clrProxy() {
   PROXY_ENV="http_proxy ftp_proxy https_proxy all_proxy "
   PROXY_ENV=$PROXY_ENV"HTTP_PROXY HTTPS_PROXY FTP_PROXY ALL_PROXY"
   for envar in $=PROXY_ENV
   do
+    echo "Unsetting: $envar"
     unset $envar
   done
 }
