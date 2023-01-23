@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+# https://github.com/psf/black/blob/main/Dockerfile
+
+set -xueo pipefail
+
+URL="https://github.com/psf/black"
+NAME=black
+HAVE_IMAGE=$(docker image list | grep "${NAME}" || echo -n "false")
+
+if [[ "${HAVE_IMAGE}" = "false" ]]
+then
+  rm -rf /tmp/${NAME}
+  git clone ${URL} /tmp/${NAME}
+  docker build -f "${HOME}/dotfiles/dockerfiles/Dockerfile_${NAME}" \
+    --tag "${NAME}"						\
+    "/tmp/${NAME}"
+fi
+
+docker run 							\
+	--rm 							\
+	-i 							\
+	--name "${NAME}"					\
+	${NAME}				 			\
+	$@

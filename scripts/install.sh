@@ -63,7 +63,7 @@ done
 # Local programs and scripts
 #
 $MKDIR ${HOME}/.local/{opt,bin}
-LOCALDIRS="latexindent"
+LOCALDIRS="latexindent black"
 for localdir in $LOCALDIRS; do
 	$MKDIR ${HOME}/.local/opt/${localdir}
 	for file in $(find ${PREFIX}/local/opt/${localdir} -maxdepth 1 -type f); do
