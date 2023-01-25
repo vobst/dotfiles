@@ -6,11 +6,12 @@ set -xueo pipefail
 
 docker pull ghcr.io/cmhughes/latexindent.pl 1>&2
 
-#DEFAULT_FLAGS="-s -w"
+CONFIG="${HOME}/dotfiles/local/opt/latexindent/config.yaml"
 
 docker run 							\
 	--rm 							\
 	-i 							\
 	--name "latexindent"					\
+	-v "${CONFIG}":/io/config.yaml				\
 	ghcr.io/cmhughes/latexindent.pl 			\
-	${DEFAULT_FLAGS:-} ${FLAGS:-}
+	-m -l "/io/config.yaml" -

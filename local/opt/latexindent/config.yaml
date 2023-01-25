@@ -1,0 +1,9 @@
+modifyLineBreaks:
+    textWrapOptions:
+        columns: 73
+
+indentRules:
+    item: " "
+
+indentRulesGlobal:
+    environments: "  "
