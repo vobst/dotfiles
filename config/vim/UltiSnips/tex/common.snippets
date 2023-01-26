@@ -130,6 +130,19 @@ snippet itm "Itemize" bi
 \item ${0:${VISUAL}}
 endsnippet
 
+###########
+# FIGURES #
+###########
+
+snippet fig "Figure environment" b
+\begin{figure}[${1:htpb}]
+	\centering
+	${2:\includegraphics[width=0.8\textwidth]{$3}}
+	\caption{${4:$3}}
+	\label{fig:${5:${3/\W+/-/g}}}
+\end{figure}
+endsnippet
+
 ##########
 # TABLES #
 ##########
