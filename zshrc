@@ -55,6 +55,8 @@ fi
 # list files
 alias l="exa"
 alias ll="exa -lbh@F --git"
+# disk usage
+alias du="dust"
 
 #----
 # Files
