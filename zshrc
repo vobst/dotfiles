@@ -53,7 +53,8 @@ else
   echo "TODO: Adapt for Linux" > /dev/null
 fi
 # list files
-alias ll="ls -lAFh --color=yes"
+alias l="exa"
+alias ll="exa -lbh@F --git"
 
 #----
 # Files

@@ -5,7 +5,7 @@
 --fingerprinting-canvas-image-data-noise
 --fingerprinting-canvas-measuretext-noise
 --fingerprinting-client-rects-noise
---user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 13_0_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36 Edg/107.0.1418.68"
+--user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"
 --force-punycode-hostnames
 --referrer-directive=noreferrers
 --close-window-with-last-tab=never
