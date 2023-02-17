@@ -38,9 +38,7 @@ pgrep NetworkManager > /tmp/NetworkManager.pid
 pgrep pipewire > /tmp/pipewire.pid
 
 # remap capslock to escape
-setxkbmap -option caps:escape
-
 # use LSHIFT+RSHIFT to switch between German an US keyboard
-setxkbmap -model pc105 -layout us,de -option grp:shifts_toggle,ctrl:nocaps
+setxkbmap -model pc105 -layout us,de -option grp:shifts_toggle,caps:escape
 
 exec /usr/bin/i3
