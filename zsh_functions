@@ -53,3 +53,19 @@ function clrProxy() {
 function pdfo() {
   chromium "file://$(pwd)/$1"
 }
+
+# Headset Settings
+# toggle profile of bluetooth headset
+function btt() {
+  MAC='4C_87_5D_2D_97_AF'
+  ACTIVE_PROFILE=$(pactl list 					| \
+    rg $MAC -A 19 						| \
+    rg '^\sActive Profile: (.*)$' -r '$1')
+  if [[ $ACTIVE_PROFILE = "a2dp-sink-aac" ]]
+  then
+    NEW_PROFILE="headset-head-unit"
+  else
+    NEW_PROFILE="a2dp-sink"
+  fi
+  pactl set-card-profile "bluez_card.$MAC" "$NEW_PROFILE"
+}
