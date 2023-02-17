@@ -49,13 +49,13 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 
 ## Screenshots
 bindsym Print exec --no-startup-id maim "$HOME/Pictures/$(date \"+%F-%T\")"
-bindsym Mod1+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "$HOME/Pictures/$(date \"+%F-%T\")"
+bindsym Ctrl+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "$HOME/Pictures/$(date \"+%F-%T\")"
 bindsym Shift+Print exec --no-startup-id maim --select "$HOME/Pictures/$(date \"+%F-%T\")"
 
 ## Clipboard Screenshots
-bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
-bindsym Ctrl+Mod1+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
-bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
+#bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
+#bindsym Ctrl+Mod1+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
+#bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 
 # use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient, vim like
