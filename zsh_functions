@@ -50,8 +50,12 @@ function clrProxy() {
   done
 }
 
-function pdfo() {
+function chro() {
   chromium "file://$(pwd)/$1"
+}
+
+function brao() {
+  brave "file://$(pwd)/$1"
 }
 
 # Headset Settings
