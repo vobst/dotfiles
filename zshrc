@@ -31,7 +31,8 @@ setopt beep notify
 # It happens to the best ;)
 alias mv='mv -i' # (some) protection against deleting by moving
 alias wr="curl wttr.in" # weather forecast
-alias serve="python -m http.server 7331 --bind 127.0.0.1 --directory $(pwd) 2&>1 > /tmp/serve.log &"
+alias serve='python -m http.server 7331 --directory $(pwd) 2&>1 > /tmp/serve.log &'
+alias lsblk="lsblk -o +FSTYPE,FSAVAIL,TYPE,UUID"
 
 #----
 # Prompt

@@ -54,7 +54,7 @@ function chro() {
   chromium "file://$(pwd)/$1"
 }
 
-function brao() {
+function bravo() {
   brave "file://$(pwd)/$1"
 }
 
